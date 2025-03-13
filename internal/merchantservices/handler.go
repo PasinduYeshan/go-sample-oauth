@@ -6,9 +6,9 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func RegisterRoutes(e *echo.Echo) {
+func RegisterRoutes(e *echo.Group) {
 
-	e.GET("/services", GetAllServices)
+	e.GET("", GetAllServices)
 }
 
 func GetAllServices(c echo.Context) error {
