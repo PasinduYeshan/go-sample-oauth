@@ -1,18 +1,19 @@
 package ads
 
 import (
-	"encoding/json"
 	"net/http"
+
+	"github.com/labstack/echo/v4"
 )
 
-func GetAllAds(w http.ResponseWriter, r *http.Request) {
+func RegisterRoutes(e *echo.Echo) {
 
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	err := json.NewEncoder(w).Encode(ads)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-	}
+	e.GET("/ads", GetAllAds)
+}
+
+func GetAllAds(c echo.Context) error {
+
+	return c.JSON(http.StatusOK, ads)
 }
 
 // Sample data.

@@ -1,19 +1,23 @@
 package main
 
 import (
-	"github.com/PasinduYeshan/go-sample-oauth/internal/ads"
-	"github.com/PasinduYeshan/go-sample-oauth/internal/merchantservices"
+	"github.com/PasinduYeshan/go-sample-oauth/internal/common/router"
 	"log"
-	"net/http"
+
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	http.HandleFunc("/ads", ads.GetAllAds)
-
-	http.HandleFunc("/services", merchantservices.GetAllServices)
 
 	log.Println("Server is running on port 8080")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		log.Fatalf("could not start server: %v", err)
+	if err := BuildServer().Start(":8080"); err != nil {
+		log.Fatalf("Could not start server: %v", err)
 	}
+}
+
+func BuildServer() *echo.Echo {
+
+	e := echo.New()
+	router.RegisterRoutes(e)
+	return e
 }
