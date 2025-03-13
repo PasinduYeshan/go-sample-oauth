@@ -1,9 +1,8 @@
-package models
+package ads
 
-type Service struct {
+type Ad struct {
 	ID          int     `json:"id"`
-	Name        string  `json:"name"`
+	Title       string  `json:"title"`
 	Description string  `json:"description"`
 	Price       float64 `json:"price"`
-	Category    string  `json:"category"`
 }
