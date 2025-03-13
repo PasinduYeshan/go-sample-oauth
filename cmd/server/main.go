@@ -1,11 +1,10 @@
 package main
 
 import (
+	"github.com/PasinduYeshan/go-sample-oauth/internal/ads"
+	"github.com/PasinduYeshan/go-sample-oauth/internal/merchantservices"
 	"log"
 	"net/http"
-
-	"github.com/PasinduYeshan/go-sample-oauth/internal/features/ads"
-	"github.com/PasinduYeshan/go-sample-oauth/internal/features/merchantservices"
 )
 
 func main() {
