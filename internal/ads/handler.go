@@ -1,7 +1,7 @@
 package ads
 
 import (
-	"net/http"
+	"github.com/PasinduYeshan/go-sample-oauth/internal/common"
 
 	"github.com/labstack/echo/v4"
 )
@@ -13,7 +13,7 @@ func RegisterRoutes(e *echo.Group) {
 
 func GetAllAds(c echo.Context) error {
 
-	return c.JSON(http.StatusOK, ads)
+	return common.SuccessResponse(c, "Ads retrieved successfully", ads, nil)
 }
 
 // Sample data.
