@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/PasinduYeshan/go-sample-oauth/internal/common"
+	"github.com/PasinduYeshan/go-sample-oauth/internal/common/router"
 	"log"
 
 	"github.com/labstack/echo/v4"
@@ -18,6 +18,6 @@ func main() {
 func BuildServer() *echo.Echo {
 
 	e := echo.New()
-	common.RegisterRoutes(e)
+	router.RegisterRoutes(e)
 	return e
 }

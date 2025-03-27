@@ -1,4 +1,4 @@
-package common
+package router
 
 import (
 	"github.com/PasinduYeshan/go-sample-oauth/internal/ads"

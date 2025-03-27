@@ -1,7 +1,7 @@
 package merchantservices
 
 import (
-	"github.com/PasinduYeshan/go-sample-oauth/internal/common"
+	"github.com/PasinduYeshan/go-sample-oauth/internal/common/response"
 
 	"github.com/labstack/echo/v4"
 )
@@ -13,7 +13,7 @@ func RegisterRoutes(e *echo.Group) {
 
 func GetAllServices(c echo.Context) error {
 
-	return common.SuccessResponse(c, "Ads retrieved successfully", services, nil)
+	return response.SuccessResponse(c, "Ads retrieved successfully", services, nil)
 }
 
 // Sample data.
