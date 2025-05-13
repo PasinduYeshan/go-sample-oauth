@@ -1,10 +1,10 @@
 package middleware
 
 import (
-	"net/http"
 	"strings"
 
-	"github.com/PasinduYeshan/go-sample-oauth/internal/common/response" // Added for standardized error responses
+	"github.com/PasinduYeshan/go-sample-oauth/internal/common/apperror"
+	"github.com/PasinduYeshan/go-sample-oauth/internal/common/response"
 	"github.com/PasinduYeshan/go-sample-oauth/internal/config"
 	"github.com/labstack/echo/v4"
 )
@@ -18,8 +18,8 @@ func ScopeAuthMiddleware() echo.MiddlewareFunc {
 		return func(c echo.Context) error {
 			scopeCfg := config.GetScopeConfig()
 			if scopeCfg == nil {
-				// Configuration not loaded, deny access as a security precaution
-				return response.ErrorResponse(c, http.StatusInternalServerError, "API scope configuration not loaded")
+				// Use the predefined AppError for scope config not loaded
+				return response.InternalServerErrorResponse(c, apperror.ErrScopeConfigNotLoaded)
 			}
 
 			requestPath := c.Path() // This might need adjustment if using route patterns with parameters
@@ -70,7 +70,8 @@ func ScopeAuthMiddleware() echo.MiddlewareFunc {
 			// --- End of Simulated JWT Parsing ---
 
 			if !hasRequiredScopes(userScopesFromToken, requiredScopes) {
-				return response.ErrorResponse(c, http.StatusForbidden, "Insufficient scope")
+				// Use the predefined AppError for insufficient scope
+				return response.ForbiddenResponse(c, apperror.ErrInsufficientScope)
 			}
 
 			return next(c)
