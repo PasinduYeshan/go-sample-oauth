@@ -1,0 +1,7 @@
+api_resources:
+  - path: "/api/v1/ads"
+    method: "GET"
+    scopes: ["read:ads"]
+  - path: "/api/v1/services"
+    method: "GET"
+    scopes: ["read:services"]
