@@ -12,5 +12,5 @@ func RegisterRoutes(e *echo.Group) {
 
 func GetAllServices(c echo.Context) error {
 
-	return response.SuccessResponse(c, "Ads retrieved successfully", SampleData, nil)
+	return response.SuccessResponse(c, "Ads retrieved successfully.", SampleData, nil)
 }
